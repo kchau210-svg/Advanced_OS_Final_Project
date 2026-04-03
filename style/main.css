@@ -1,0 +1,183 @@
+/*********************************************
+                GLOBAL VARIABLES
+**********************************************/
+:root {
+    --primary-color: #aa5be8; /* Trusting Blue */
+    --secondary-color: #50c878; /* Growth Green */
+    --text-dark: #333333;
+    --light-bg: #f9fbfd;
+    --white: #ffffff;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/*********************************************
+                BODY STYLE
+**********************************************/
+html, body {
+    background-color: var(--light-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    height: 100%;
+}
+
+.main_wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/*********************************************
+                HEADER STYLE
+**********************************************/
+#header_main_container {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between; /* Logo left, Nav right */
+    align-items: center;
+    padding: 1rem 5%;
+    box-shadow: var(--shadow);
+}
+
+#logo img {
+    width: 6rem;
+    height: auto;
+}
+
+#header_menu nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+#header_menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#header_menu a:hover {
+    color: var(--primary-color);
+}
+
+/*********************************************
+            HOME STYLE
+**********************************************/
+.grid_home_container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.grid_item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.grid_item img { /* Mission section image */
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}
+
+/*  Login form  */
+
+#login_main_container {
+    height: fit-content;
+}
+
+#login_main_container h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* This is crucial for padding, because it ensures consistent sizing */
+}
+
+.login-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login-btn:hover {
+    background-color: #e684f1;
+}
+
+/*********************************************
+                FOOTER STYLE
+**********************************************/
+#footer_main_container {
+    background-color: #2c3e50;
+    color: var(--white);
+    padding: 3rem 5% 1rem 5%;
+}
+
+#footer_upper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer_category_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+}
+
+.footer_menu ul {
+    padding: 0;
+    list-style: none;
+}
+
+.footer_menu a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer_menu a:hover {
+    color: var(--white);
+}
+
+.footer_bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+}
+
+#footer_logo img{
+    width: 15rem;
+    height: auto;;
+}
