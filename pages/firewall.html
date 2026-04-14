@@ -10,9 +10,10 @@
 
 <div class="main_wrapper">
 
+    <!---------------- HEADER ---------------->
     <header id="header_main_container">
         <div id="logo">
-            <img src="./pictures/logo.png" alt="Empower Change Foundation Logo">
+            <img src="./pictures/logo.png" alt="Logo">
         </div>
 
         <div id="header_menu">
@@ -26,7 +27,10 @@
         </div>
     </header>
 
+
+    <!---------------- MAIN ---------------->
     <main id="grid_main_container">
+
         <section class="page_section active_page">
 
             <div class="content_card">
@@ -34,23 +38,23 @@
                 <h2>Firewall Connection Test</h2>
 
                 <p>
-                    This page is a static placeholder for firewall testing.
+                    This page simulates firewall testing and network security validation.
                 </p>
 
-                <p>
-                    The firewall configuration and live testing will be handled separately.
-                </p>
-
+                <!-- IMAGE -->
                 <div style="margin-top: 25px; text-align: center;">
-                    <img src="./pictures/under-construction.png" alt="Under Construction"
+                    <img src="./pictures/under-construction.png"
+                         alt="Firewall"
                          style="max-width: 250px; width: 100%; border-radius: 12px;">
                 </div>
 
+                <!-- 🔥 TEST PANEL -->
                 <div style="
                     margin-top: 40px;
                     display: flex;
                     justify-content: center;
                 ">
+
                     <div style="
                         width: 100%;
                         max-width: 420px;
@@ -58,38 +62,57 @@
                         border-radius: 16px;
                         background: #ffffff;
                         border: 1px solid #e6eaf2;
-                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+                        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
                         text-align: center;
                     ">
-                        <h3 style="margin-top: 0; margin-bottom: 15px;">Test Firewall</h3>
+
+                        <h3 style="margin-bottom: 15px;">Firewall Testing Panel</h3>
 
                         <p style="margin-bottom: 20px;">
-                            Click the button below to simulate a firewall connection test.
+                            Select a test to simulate firewall behavior.
                         </p>
 
-                        <button id="firewallTestBtn" class="main-btn">Run Test</button>
+                        <!-- 🔥 BUTTONS -->
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
 
-                        <p id="firewallStatus" style="margin-top: 15px; font-weight: 600;"></p>
+                            <button class="main-btn test-btn" data-test="connection">Test Connection</button>
+                            <button class="main-btn test-btn" data-test="ports">Check Ports</button>
+                            <button class="main-btn test-btn" data-test="security">Security Scan</button>
+                            <button class="main-btn test-btn" data-test="traffic">Analyze Traffic</button>
+                            <button class="main-btn test-btn" data-test="firewall">Firewall Status</button>
+
+                        </div>
+
+                        <!-- STATUS -->
+                        <p id="firewallStatus" style="margin-top: 20px; font-weight: 600;"></p>
+
                     </div>
+
                 </div>
 
+                <!-- INFO -->
                 <div style="margin-top: 40px;">
                     <h3 style="color: var(--primary-dark); margin-bottom: 10px;">Planned Features</h3>
                     <ul style="color: var(--text-light); line-height: 1.8;">
-                        <li>Firewall connection status</li>
-                        <li>Port checking</li>
-                        <li>Security logs</li>
-                        <li>Access validation</li>
+                        <li>Firewall connection monitoring</li>
+                        <li>Port filtering validation</li>
+                        <li>Traffic inspection</li>
+                        <li>Security threat detection</li>
                     </ul>
                 </div>
 
             </div>
 
         </section>
+
     </main>
 
+
+    <!---------------- FOOTER ---------------->
     <footer id="footer_main_container">
+
         <div id="footer_upper">
+
             <div>
                 <p class="footer_category_title">Navigation</p>
                 <ul>
@@ -101,30 +124,58 @@
             <div id="footer_logo">
                 <img src="./pictures/logo.png" alt="Logo">
             </div>
+
         </div>
 
         <div class="footer_bottom">
             <p>&copy; 2026 Empower Change Foundation</p>
         </div>
+
     </footer>
 
 </div>
 
+
+<!---------------- SCRIPT ---------------->
 <script>
-    const firewallTestBtn = document.getElementById("firewallTestBtn");
-    const firewallStatus = document.getElementById("firewallStatus");
+    const buttons = document.querySelectorAll(".test-btn");
+    const status = document.getElementById("firewallStatus");
 
-    if (firewallTestBtn) {
-        firewallTestBtn.addEventListener("click", function () {
-            firewallStatus.textContent = "Testing connection...";
-            firewallStatus.style.color = "orange";
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
 
-            setTimeout(function () {
-                firewallStatus.textContent = "Firewall connection successful ✅";
-                firewallStatus.style.color = "green";
-            }, 1500);
+            const testType = this.getAttribute("data-test");
+
+            status.textContent = "Running test...";
+            status.style.color = "orange";
+
+            setTimeout(() => {
+
+                if (testType === "connection") {
+                    status.textContent = "Connection successful ✅";
+                }
+
+                if (testType === "ports") {
+                    status.textContent = "Ports secure (no vulnerabilities) 🔒";
+                }
+
+                if (testType === "security") {
+                    status.textContent = "Security scan complete — no threats detected 🛡️";
+                }
+
+                if (testType === "traffic") {
+                    status.textContent = "Traffic normal — no suspicious activity 📊";
+                }
+
+                if (testType === "firewall") {
+                    status.textContent = "Firewall active and blocking threats 🚫";
+                }
+
+                status.style.color = "green";
+
+            }, 1200);
         });
-    }
+    });
 </script>
 
 </body>

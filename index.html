@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,279 +11,152 @@
 
 <div class="main_wrapper">
 
-    <!--------------------------------------------------
-                    HEADER SECTION
-    --------------------------------------------------->
-    <header id="header_main_container">
+<!-- HEADER -->
+<header id="header_main_container">
 
-        <div id="logo">
-            <img src="./pictures/logo.png" alt="Empower Change Foundation Logo">
+    <div id="logo">
+        <img src="./pictures/logo.png">
+    </div>
+
+    <div id="header_menu">
+        <nav>
+            <a href="#" onclick="showPage('home_page')">Home</a>
+            <a href="#" onclick="requestPageAccess('donor_page')">Donor Management</a>
+            <a href="#" onclick="requestPageAccess('staff_page')">Staff Communication</a>
+            <a href="#" onclick="requestPageAccess('volunteer_page')">Volunteer Access</a>
+            <a href="#" onclick="requestPageAccess('timesheet_page')">Time Sheet</a>
+            <a href="#" onclick="requestPageAccess('firewall_page')">Firewall Test</a>
+            <a href="#" onclick="logoutUser()">Logout</a>
+        </nav>
+    </div>
+
+</header>
+
+<!-- MAIN -->
+<main id="grid_main_container">
+
+<!-- HOME + LOGIN -->
+<section id="home_page" class="page_section active_page">
+
+    <div class="grid_home_container">
+
+        <div class="grid_item">
+            <h2>Welcome</h2>
+            <p>Login to access system features.</p>
         </div>
 
-        <div id="header_menu">
-            <nav>
+        <div class="grid_item" id="login_main_container">
 
-                <a href="#" onclick="showPage('home_page'); return false;">Home</a>
+            <form id="loginForm">
 
-                <a href="#" onclick="requestPageAccess('donor_page'); return false;">Donor Management</a>
-                <a href="#" onclick="requestPageAccess('staff_page'); return false;">Staff Communication</a>
-                <a href="#" onclick="requestPageAccess('volunteer_page'); return false;">Volunteer Access</a>
-                <a href="#" onclick="requestPageAccess('timesheet_page'); return false;">Time Sheet</a>
+                <h2>Secure Login</h2>
 
-                <!-- NEW FIREWALL BUTTON -->
-                <a href="#" onclick="requestPageAccess('firewall_page'); return false;">Firewall Test</a>
+                <label>Username</label>
+                <input type="text" id="username" required>
 
-                <a href="#" onclick="logoutUser(); return false;">Logout</a>
+                <label>Password</label>
+                <input type="password" id="password" required>
 
-            </nav>
+                <button class="main-btn">Log In</button>
+
+                <p><strong>Demo:</strong></p>
+                <p>admin / admin123</p>
+                <p>staff / staff123</p>
+                <p>volunteer / volunteer123</p>
+
+                <p id="loginMessage"></p>
+
+            </form>
+
         </div>
 
-    </header>
+    </div>
 
+</section>
 
-    <!--------------------------------------------------
-                    MAIN CONTENT AREA
-    --------------------------------------------------->
-    <main id="grid_main_container">
+<!-- DONOR PAGE -->
+<section id="donor_page" class="page_section">
+    <div class="content_card">
+        <h2>Donor Management</h2>
+        <p>Manage donor information and contributions.</p>
+    </div>
+</section>
 
-        <!---------------- HOME PAGE ---------------->
-        <section id="home_page" class="page_section active_page">
+<!-- STAFF PAGE -->
+<section id="staff_page" class="page_section">
+    <div class="content_card">
+        <h2>Staff Communication</h2>
+        <p>Internal staff messaging system.</p>
+    </div>
+</section>
 
-            <div class="grid_home_container">
+<!-- VOLUNTEER PAGE -->
+<section id="volunteer_page" class="page_section">
+    <div class="content_card">
+        <h2>Volunteer Access</h2>
+        <p>Volunteer dashboard and activities.</p>
+    </div>
+</section>
 
-                <div class="grid_item">
-                    <h2>Mission Statement</h2>
+<!-- TIMESHEET PAGE -->
+<section id="timesheet_page" class="page_section">
+    <div class="content_card">
+        <h2>Time Sheet</h2>
+        <p>Track employee work hours.</p>
+    </div>
+</section>
 
-                    <p>
-                        At Empower Change Foundation, our mission is to empower individuals and communities
-                        through education, support, and advocacy.
-                    </p>
+<!-- FIREWALL PAGE -->
+<section id="firewall_page" class="page_section">
 
-                    <p>
-                        We are committed to creating an inclusive and equitable society.
-                    </p>
+    <div class="content_card">
 
-                    <img src="./pictures/volunteers.jpg" alt="Volunteers working together">
+        <h2>Firewall Connection Test</h2>
+
+        <div style="display:flex; justify-content:center; margin-top:40px;">
+            <div style="max-width:450px; width:100%; text-align:center;">
+
+                <h3>Firewall Testing Panel</h3>
+
+                <div style="display:flex; flex-direction:column; gap:10px; margin-top:20px;">
+
+                    <button class="main-btn firewall-btn" data-test="rule1">
+                        Test Rule 1 (HTTP) - should work
+                    </button>
+
+                    <button class="main-btn firewall-btn" data-test="rule3">
+                        Test Rule 3 (8080) - should be blocked
+                    </button>
+
+                    <button class="main-btn firewall-btn" data-test="rule5">
+                        Test Rule 5 (HTTPS out) - should be blocked
+                    </button>
+
+                    <button class="main-btn firewall-btn" data-test="rule4">
+                        Test Rule 4 (Ping 192.168.47.133) - should work
+                    </button>
+
+                    <button class="main-btn firewall-btn" data-test="rule6">
+                        Test Rule 6 (Incoming 192.168.47.0/24) - should work
+                    </button>
+
                 </div>
 
-                <div class="grid_item" id="login_main_container">
-
-                    <form id="loginForm">
-
-                        <h2>Secure Login</h2>
-
-                        <div class="input-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" placeholder="Enter Username" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" placeholder="Enter Password" required>
-                        </div>
-
-                        <button type="submit" class="main-btn">Log In</button>
-
-                        <div class="form-footer">
-                            <label><input type="checkbox"> Remember me</label>
-                            <a href="#">Forgot password?</a>
-                        </div>
-
-                        <div class="demo_credentials">
-                            <p><strong>Demo Credentials</strong></p>
-                            <p>Admin: admin / admin123</p>
-                            <p>Staff: staff / staff123</p>
-                            <p>Volunteer: volunteer / volunteer123</p>
-                        </div>
-
-                        <p id="loginMessage" class="status_message"></p>
-                        <p id="currentUserRole">Not logged in.</p>
-
-                    </form>
-                </div>
+                <p id="firewallStatus" style="margin-top:20px; font-weight:600;"></p>
 
             </div>
-        </section>
-
-
-        <!---------------- DONOR PAGE ---------------->
-        <section id="donor_page" class="page_section">
-
-            <div class="content_card">
-
-                <h2>Donor Management</h2>
-
-                <table class="data_table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>D001</td>
-                            <td>Emily Carter</td>
-                            <td>emily@email.com</td>
-                            <td>$500</td>
-                            <td>2026-03-10</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-        </section>
-
-
-        <!---------------- STAFF PAGE ---------------->
-        <section id="staff_page" class="page_section">
-
-            <div class="content_card">
-
-                <h2>Staff Communication</h2>
-
-                <form id="staffForm">
-
-                    <div class="input-group">
-                        <label>Subject</label>
-                        <input type="text" id="staffSubject">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Message</label>
-                        <textarea id="staffMessage"></textarea>
-                    </div>
-
-                    <button type="submit" class="main-btn">Send</button>
-
-                    <p id="staffStatus"></p>
-
-                </form>
-
-            </div>
-        </section>
-
-
-        <!---------------- VOLUNTEER PAGE ---------------->
-        <section id="volunteer_page" class="page_section">
-
-            <div class="content_card">
-
-                <h2>Volunteer Access</h2>
-
-                <table class="data_table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Program</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                </table>
-
-            </div>
-        </section>
-
-
-        <!---------------- TIMESHEET PAGE ---------------->
-        <section id="timesheet_page" class="page_section">
-
-            <div class="content_card">
-
-                <h2>Time Sheet</h2>
-
-                <form id="timesheetForm">
-
-                    <div class="input-group">
-                        <label>Name</label>
-                        <input type="text" id="employeeName">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Date</label>
-                        <input type="date" id="workDate">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Hours</label>
-                        <input type="number" id="hoursWorked">
-                    </div>
-
-                    <button type="submit" class="main-btn">Submit</button>
-
-                    <p id="timesheetStatus"></p>
-
-                </form>
-
-            </div>
-        </section>
-
-
-        <!---------------- FIREWALL PAGE ---------------->
-        <section id="firewall_page" class="page_section">
-
-            <div class="content_card">
-
-                <h2>Firewall Connection Test</h2>
-
-                <p>
-                    This page is used to test firewall connectivity between the client and server.
-                </p>
-
-                <p>
-                    Status: <strong style="color: orange;">Under Construction</strong>
-                </p>
-
-                <img src="./pictures/under-construction.png" alt="Under Construction" style="max-width: 300px; margin-top: 20px;">
-
-                <p style="margin-top: 20px;">
-                    Future functionality will include:
-                </p>
-
-                <ul>
-                    <li>Firewall status check</li>
-                    <li>Connection testing</li>
-                    <li>Port validation</li>
-                    <li>Security logs</li>
-                </ul>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!--------------------------------------------------
-                    FOOTER SECTION
-    --------------------------------------------------->
-    <footer id="footer_main_container">
-
-        <div id="footer_upper">
-
-            <div>
-                <p class="footer_category_title">Navigation</p>
-
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Donors</a></li>
-                </ul>
-            </div>
-
-            <div id="footer_logo">
-                <img src="./pictures/logo.png" alt="Logo">
-            </div>
-
         </div>
 
-        <div class="footer_bottom">
-            <p>&copy; 2026 Empower Change Foundation</p>
-        </div>
+    </div>
 
-    </footer>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer_main_container">
+    <p>&copy; 2026 Empower Change Foundation</p>
+</footer>
 
 </div>
 
