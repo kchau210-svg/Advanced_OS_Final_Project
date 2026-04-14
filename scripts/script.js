@@ -3,105 +3,141 @@ let loggedInUser = null;
 const users = {
     admin: {
         password: "admin123",
-        allowedPages: ["firewall_page"]
+        allowedPages: ["donor_page", "staff_page", "volunteer_page", "timesheet_page", "firewall_page"]
     },
     staff: {
         password: "staff123",
-        allowedPages: []
+        allowedPages: ["donor_page", "staff_page", "timesheet_page"]
     },
     volunteer: {
         password: "volunteer123",
-        allowedPages: []
+        allowedPages: ["volunteer_page", "timesheet_page"]
     }
 };
 
 function showPage(pageId) {
-    document.querySelectorAll(".page_section").forEach(p => p.classList.remove("active_page"));
-    document.getElementById(pageId).classList.add("active_page");
+    document.querySelectorAll(".page_section").forEach(function (page) {
+        page.classList.remove("active_page");
+    });
+
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+        selectedPage.classList.add("active_page");
+    }
 }
 
 function requestPageAccess(pageId) {
+    const loginMessage = document.getElementById("loginMessage");
+
     if (!loggedInUser) {
-        alert("Please login first");
+        if (loginMessage) {
+            loginMessage.textContent = "Please log in first.";
+            loginMessage.style.color = "red";
+        }
+        showPage("home_page");
         return;
     }
 
     if (users[loggedInUser].allowedPages.includes(pageId)) {
         showPage(pageId);
+
+        if (loginMessage) {
+            loginMessage.textContent = "";
+        }
     } else {
-        alert("Access Denied");
+        if (loginMessage) {
+            loginMessage.textContent = "Access denied.";
+            loginMessage.style.color = "red";
+        }
+        showPage("home_page");
     }
 }
 
 function logoutUser() {
     loggedInUser = null;
+
+    const loginMessage = document.getElementById("loginMessage");
+    if (loginMessage) {
+        loginMessage.textContent = "You have been logged out.";
+        loginMessage.style.color = "green";
+    }
+
     showPage("home_page");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    // LOGIN
     const loginForm = document.getElementById("loginForm");
+    const firewallButtons = document.querySelectorAll(".firewall-btn");
+    const firewallStatus = document.getElementById("firewallStatus");
 
-    loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        const user = document.getElementById("username").value;
-        const pass = document.getElementById("password").value;
-        const msg = document.getElementById("loginMessage");
+            const username = document.getElementById("username").value.trim().toLowerCase();
+            const password = document.getElementById("password").value.trim();
+            const loginMessage = document.getElementById("loginMessage");
 
-        if (!users[user] || users[user].password !== pass) {
-            msg.textContent = "Invalid login";
-            msg.style.color = "red";
-            return;
-        }
+            if (!users[username] || users[username].password !== password) {
+                if (loginMessage) {
+                    loginMessage.textContent = "Invalid login.";
+                    loginMessage.style.color = "red";
+                }
+                return;
+            }
 
-        loggedInUser = user;
-        msg.textContent = "Login successful";
-        msg.style.color = "green";
-    });
+            loggedInUser = username;
 
-    // FIREWALL TESTS
-    const buttons = document.querySelectorAll(".firewall-btn");
-    const status = document.getElementById("firewallStatus");
+            if (loginMessage) {
+                loginMessage.textContent = "Login successful.";
+                loginMessage.style.color = "green";
+            }
 
-    buttons.forEach(btn => {
+            loginForm.reset();
+
+            if (username === "admin" || username === "staff") {
+                showPage("donor_page");
+            } else {
+                showPage("volunteer_page");
+            }
+        });
+    }
+
+    firewallButtons.forEach(function (btn) {
         btn.addEventListener("click", function () {
+            if (!firewallStatus) return;
 
             const test = this.dataset.test;
 
-            status.textContent = "Running test...";
-            status.style.color = "orange";
+            firewallStatus.textContent = "Running test...";
+            firewallStatus.style.color = "orange";
 
-            setTimeout(() => {
-
+            setTimeout(function () {
                 if (test === "rule1") {
-                    status.textContent = "HTTP allowed → Connection successful ✅";
-                    status.style.color = "green";
+                    firewallStatus.textContent = "HTTP allowed → Connection successful ✅";
+                    firewallStatus.style.color = "green";
                 }
 
                 if (test === "rule3") {
-                    status.textContent = "Port 8080 blocked → Connection denied 🚫";
-                    status.style.color = "red";
+                    firewallStatus.textContent = "Port 8080 blocked → Connection denied 🚫";
+                    firewallStatus.style.color = "red";
                 }
 
                 if (test === "rule5") {
-                    status.textContent = "HTTPS outbound blocked → Request failed ⛔";
-                    status.style.color = "red";
+                    firewallStatus.textContent = "HTTPS outbound blocked → Request failed ⛔";
+                    firewallStatus.style.color = "red";
                 }
 
                 if (test === "rule4") {
-                    status.textContent = "Ping successful → Host reachable ✅";
-                    status.style.color = "green";
+                    firewallStatus.textContent = "Ping successful → Host reachable ✅";
+                    firewallStatus.style.color = "green";
                 }
 
                 if (test === "rule6") {
-                    status.textContent = "Incoming subnet allowed → Traffic accepted ✅";
-                    status.style.color = "green";
+                    firewallStatus.textContent = "Incoming subnet allowed → Traffic accepted ✅";
+                    firewallStatus.style.color = "green";
                 }
-
             }, 1200);
         });
     });
-
 });
