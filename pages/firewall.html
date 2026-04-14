@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Test - Empower Change Foundation</title>
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+<body>
+
+<div class="main_wrapper">
+
+    <header id="header_main_container">
+        <div id="logo">
+            <img src="./pictures/logo.png" alt="Empower Change Foundation Logo">
+        </div>
+
+        <div id="header_menu">
+            <nav>
+                <a href="./index.html">Home</a>
+                <a href="./time_sheet.html">Time Sheet</a>
+                <a href="./staff_communication.html">Staff Communication</a>
+                <a href="./employee_list.html">Employee List</a>
+                <a href="./firewall.html">Firewall Test</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="grid_main_container">
+        <section class="page_section active_page">
+
+            <div class="content_card">
+
+                <h2>Firewall Connection Test</h2>
+
+                <p>
+                    This page is a static placeholder for firewall testing.
+                </p>
+
+                <p>
+                    The firewall configuration and live testing will be handled separately.
+                </p>
+
+                <div style="margin-top: 25px; text-align: center;">
+                    <img src="./pictures/under-construction.png" alt="Under Construction"
+                         style="max-width: 250px; width: 100%; border-radius: 12px;">
+                </div>
+
+                <div style="
+                    margin-top: 40px;
+                    display: flex;
+                    justify-content: center;
+                ">
+                    <div style="
+                        width: 100%;
+                        max-width: 420px;
+                        padding: 25px;
+                        border-radius: 16px;
+                        background: #ffffff;
+                        border: 1px solid #e6eaf2;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+                        text-align: center;
+                    ">
+                        <h3 style="margin-top: 0; margin-bottom: 15px;">Test Firewall</h3>
+
+                        <p style="margin-bottom: 20px;">
+                            Click the button below to simulate a firewall connection test.
+                        </p>
+
+                        <button id="firewallTestBtn" class="main-btn">Run Test</button>
+
+                        <p id="firewallStatus" style="margin-top: 15px; font-weight: 600;"></p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 10px;">Planned Features</h3>
+                    <ul style="color: var(--text-light); line-height: 1.8;">
+                        <li>Firewall connection status</li>
+                        <li>Port checking</li>
+                        <li>Security logs</li>
+                        <li>Access validation</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <footer id="footer_main_container">
+        <div id="footer_upper">
+            <div>
+                <p class="footer_category_title">Navigation</p>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./firewall.html">Firewall Test</a></li>
+                </ul>
+            </div>
+
+            <div id="footer_logo">
+                <img src="./pictures/logo.png" alt="Logo">
+            </div>
+        </div>
+
+        <div class="footer_bottom">
+            <p>&copy; 2026 Empower Change Foundation</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    const firewallTestBtn = document.getElementById("firewallTestBtn");
+    const firewallStatus = document.getElementById("firewallStatus");
+
+    if (firewallTestBtn) {
+        firewallTestBtn.addEventListener("click", function () {
+            firewallStatus.textContent = "Testing connection...";
+            firewallStatus.style.color = "orange";
+
+            setTimeout(function () {
+                firewallStatus.textContent = "Firewall connection successful ✅";
+                firewallStatus.style.color = "green";
+            }, 1500);
+        });
+    }
+</script>
+
+</body>
+</html>
