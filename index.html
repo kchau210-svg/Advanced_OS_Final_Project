@@ -2,289 +2,293 @@
 <html lang="en">
 
 <head>
-    <!-- Basic page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Page title shown in browser tab -->
     <title>Empower Change Foundation</title>
-
-    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="./style/main.css">
 </head>
 
 <body>
 
-    <!-- Main wrapper for full page layout -->
-    <div class="main_wrapper">
+<div class="main_wrapper">
 
-        <!--------------------------------------------------
-                        HEADER SECTION
-        --------------------------------------------------->
-        <header id="header_main_container">
+    <!--------------------------------------------------
+                    HEADER SECTION
+    --------------------------------------------------->
+    <header id="header_main_container">
 
-            <!-- Organization logo -->
-            <div id="logo">
-                <img src="./pictures/logo.png" alt="Empower Change Foundation Logo">
-            </div>
+        <div id="logo">
+            <img src="./pictures/logo.png" alt="Empower Change Foundation Logo">
+        </div>
 
-            <!-- Navigation menu -->
-            <div id="header_menu">
-                <nav>
+        <div id="header_menu">
+            <nav>
 
-                    <!-- Navigation links call JavaScript functions -->
-                    <a href="#" onclick="showPage('home_page'); return false;">Home</a>
+                <a href="#" onclick="showPage('home_page'); return false;">Home</a>
 
-                    <!-- These require login access -->
-                    <a href="#" onclick="requestPageAccess('donor_page'); return false;">Donor Management</a>
-                    <a href="#" onclick="requestPageAccess('staff_page'); return false;">Staff Communication</a>
-                    <a href="#" onclick="requestPageAccess('volunteer_page'); return false;">Volunteer Access</a>
-                    <a href="#" onclick="requestPageAccess('timesheet_page'); return false;">Time Sheet</a>
+                <a href="#" onclick="requestPageAccess('donor_page'); return false;">Donor Management</a>
+                <a href="#" onclick="requestPageAccess('staff_page'); return false;">Staff Communication</a>
+                <a href="#" onclick="requestPageAccess('volunteer_page'); return false;">Volunteer Access</a>
+                <a href="#" onclick="requestPageAccess('timesheet_page'); return false;">Time Sheet</a>
 
-                    <!-- Logout button -->
-                    <a href="#" onclick="logoutUser(); return false;">Logout</a>
-                </nav>
-            </div>
+                <!-- NEW FIREWALL BUTTON -->
+                <a href="#" onclick="requestPageAccess('firewall_page'); return false;">Firewall Test</a>
 
-        </header>
+                <a href="#" onclick="logoutUser(); return false;">Logout</a>
+
+            </nav>
+        </div>
+
+    </header>
 
 
-        <!--------------------------------------------------
-                        MAIN CONTENT AREA
-        --------------------------------------------------->
-        <main id="grid_main_container">
+    <!--------------------------------------------------
+                    MAIN CONTENT AREA
+    --------------------------------------------------->
+    <main id="grid_main_container">
 
-            <!---------------- HOME PAGE ---------------->
-            <section id="home_page" class="page_section active_page">
+        <!---------------- HOME PAGE ---------------->
+        <section id="home_page" class="page_section active_page">
 
-                <div class="grid_home_container">
+            <div class="grid_home_container">
 
-                    <!-- Mission section -->
-                    <div class="grid_item">
-                        <h2>Mission Statement</h2>
+                <div class="grid_item">
+                    <h2>Mission Statement</h2>
 
-                        <p>
-                            At Empower Change Foundation, our mission is to empower individuals and communities
-                            through education, support, and advocacy.
-                        </p>
+                    <p>
+                        At Empower Change Foundation, our mission is to empower individuals and communities
+                        through education, support, and advocacy.
+                    </p>
 
-                        <p>
-                            We are committed to creating an inclusive and equitable society.
-                        </p>
+                    <p>
+                        We are committed to creating an inclusive and equitable society.
+                    </p>
 
-                        <!-- Image of volunteers -->
-                        <img src="./pictures/volunteers.jpg" alt="Volunteers working together">
-                    </div>
-
-                    <!-- Login form -->
-                    <div class="grid_item" id="login_main_container">
-
-                        <form id="loginForm">
-
-                            <h2>Secure Login</h2>
-
-                            <!-- Username input -->
-                            <div class="input-group">
-                                <label for="username">Username</label>
-                                <input type="text" id="username" placeholder="Enter Username" required>
-                            </div>
-
-                            <!-- Password input -->
-                            <div class="input-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" placeholder="Enter Password" required>
-                            </div>
-
-                            <!-- Submit button -->
-                            <button type="submit" class="main-btn">Log In</button>
-
-                            <!-- Extra options -->
-                            <div class="form-footer">
-                                <label><input type="checkbox"> Remember me</label>
-                                <a href="#">Forgot password?</a>
-                            </div>
-
-                            <!-- Demo credentials for testing -->
-                            <div class="demo_credentials">
-                                <p><strong>Demo Credentials</strong></p>
-                                <p>Admin: admin / admin123</p>
-                                <p>Staff: staff / staff123</p>
-                                <p>Volunteer: volunteer / volunteer123</p>
-                            </div>
-
-                            <!-- Login messages -->
-                            <p id="loginMessage" class="status_message"></p>
-
-                            <!-- Displays current logged-in role -->
-                            <p id="currentUserRole">Not logged in.</p>
-
-                        </form>
-                    </div>
-
+                    <img src="./pictures/volunteers.jpg" alt="Volunteers working together">
                 </div>
-            </section>
 
+                <div class="grid_item" id="login_main_container">
 
-            <!---------------- DONOR PAGE ---------------->
-            <section id="donor_page" class="page_section">
+                    <form id="loginForm">
 
-                <div class="content_card">
-
-                    <h2>Donor Management</h2>
-
-                    <!-- Donor table -->
-                    <table class="data_table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>D001</td>
-                                <td>Emily Carter</td>
-                                <td>emily@email.com</td>
-                                <td>$500</td>
-                                <td>2026-03-10</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </section>
-
-
-            <!---------------- STAFF PAGE ---------------->
-            <section id="staff_page" class="page_section">
-
-                <div class="content_card">
-
-                    <h2>Staff Communication</h2>
-
-                    <!-- Staff message form -->
-                    <form id="staffForm">
+                        <h2>Secure Login</h2>
 
                         <div class="input-group">
-                            <label>Subject</label>
-                            <input type="text" id="staffSubject">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter Username" required>
                         </div>
 
                         <div class="input-group">
-                            <label>Message</label>
-                            <textarea id="staffMessage"></textarea>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter Password" required>
                         </div>
 
-                        <button type="submit" class="main-btn">Send</button>
+                        <button type="submit" class="main-btn">Log In</button>
 
-                        <!-- Message status -->
-                        <p id="staffStatus"></p>
+                        <div class="form-footer">
+                            <label><input type="checkbox"> Remember me</label>
+                            <a href="#">Forgot password?</a>
+                        </div>
+
+                        <div class="demo_credentials">
+                            <p><strong>Demo Credentials</strong></p>
+                            <p>Admin: admin / admin123</p>
+                            <p>Staff: staff / staff123</p>
+                            <p>Volunteer: volunteer / volunteer123</p>
+                        </div>
+
+                        <p id="loginMessage" class="status_message"></p>
+                        <p id="currentUserRole">Not logged in.</p>
 
                     </form>
-
-                </div>
-            </section>
-
-
-            <!---------------- VOLUNTEER PAGE ---------------->
-            <section id="volunteer_page" class="page_section">
-
-                <div class="content_card">
-
-                    <h2>Volunteer Access</h2>
-
-                    <!-- Volunteer table -->
-                    <table class="data_table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Program</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                </div>
-            </section>
-
-
-            <!---------------- TIMESHEET PAGE ---------------->
-            <section id="timesheet_page" class="page_section">
-
-                <div class="content_card">
-
-                    <h2>Time Sheet</h2>
-
-                    <!-- Timesheet form -->
-                    <form id="timesheetForm">
-
-                        <div class="input-group">
-                            <label>Name</label>
-                            <input type="text" id="employeeName">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Date</label>
-                            <input type="date" id="workDate">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Hours</label>
-                            <input type="number" id="hoursWorked">
-                        </div>
-
-                        <button type="submit" class="main-btn">Submit</button>
-
-                        <!-- Status message -->
-                        <p id="timesheetStatus"></p>
-
-                    </form>
-
-                </div>
-            </section>
-
-        </main>
-
-
-        <!--------------------------------------------------
-                        FOOTER SECTION
-        --------------------------------------------------->
-        <footer id="footer_main_container">
-
-            <div id="footer_upper">
-
-                <!-- Footer links -->
-                <div>
-                    <p class="footer_category_title">Navigation</p>
-
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Donors</a></li>
-                    </ul>
-                </div>
-
-                <!-- Footer logo -->
-                <div id="footer_logo">
-                    <img src="./pictures/logo.png" alt="Logo">
                 </div>
 
             </div>
+        </section>
 
-            <!-- Copyright -->
-            <div class="footer_bottom">
-                <p>&copy; 2026 Empower Change Foundation</p>
+
+        <!---------------- DONOR PAGE ---------------->
+        <section id="donor_page" class="page_section">
+
+            <div class="content_card">
+
+                <h2>Donor Management</h2>
+
+                <table class="data_table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>D001</td>
+                            <td>Emily Carter</td>
+                            <td>emily@email.com</td>
+                            <td>$500</td>
+                            <td>2026-03-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!---------------- STAFF PAGE ---------------->
+        <section id="staff_page" class="page_section">
+
+            <div class="content_card">
+
+                <h2>Staff Communication</h2>
+
+                <form id="staffForm">
+
+                    <div class="input-group">
+                        <label>Subject</label>
+                        <input type="text" id="staffSubject">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="staffMessage"></textarea>
+                    </div>
+
+                    <button type="submit" class="main-btn">Send</button>
+
+                    <p id="staffStatus"></p>
+
+                </form>
+
+            </div>
+        </section>
+
+
+        <!---------------- VOLUNTEER PAGE ---------------->
+        <section id="volunteer_page" class="page_section">
+
+            <div class="content_card">
+
+                <h2>Volunteer Access</h2>
+
+                <table class="data_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Program</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!---------------- TIMESHEET PAGE ---------------->
+        <section id="timesheet_page" class="page_section">
+
+            <div class="content_card">
+
+                <h2>Time Sheet</h2>
+
+                <form id="timesheetForm">
+
+                    <div class="input-group">
+                        <label>Name</label>
+                        <input type="text" id="employeeName">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Date</label>
+                        <input type="date" id="workDate">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Hours</label>
+                        <input type="number" id="hoursWorked">
+                    </div>
+
+                    <button type="submit" class="main-btn">Submit</button>
+
+                    <p id="timesheetStatus"></p>
+
+                </form>
+
+            </div>
+        </section>
+
+
+        <!---------------- FIREWALL PAGE ---------------->
+        <section id="firewall_page" class="page_section">
+
+            <div class="content_card">
+
+                <h2>Firewall Connection Test</h2>
+
+                <p>
+                    This page is used to test firewall connectivity between the client and server.
+                </p>
+
+                <p>
+                    Status: <strong style="color: orange;">Under Construction</strong>
+                </p>
+
+                <img src="./pictures/under-construction.png" alt="Under Construction" style="max-width: 300px; margin-top: 20px;">
+
+                <p style="margin-top: 20px;">
+                    Future functionality will include:
+                </p>
+
+                <ul>
+                    <li>Firewall status check</li>
+                    <li>Connection testing</li>
+                    <li>Port validation</li>
+                    <li>Security logs</li>
+                </ul>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!--------------------------------------------------
+                    FOOTER SECTION
+    --------------------------------------------------->
+    <footer id="footer_main_container">
+
+        <div id="footer_upper">
+
+            <div>
+                <p class="footer_category_title">Navigation</p>
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Donors</a></li>
+                </ul>
             </div>
 
-        </footer>
+            <div id="footer_logo">
+                <img src="./pictures/logo.png" alt="Logo">
+            </div>
 
-    </div>
+        </div>
 
-    <!-- Link JavaScript file -->
-    <script src="./scripts/script.js"></script>
+        <div class="footer_bottom">
+            <p>&copy; 2026 Empower Change Foundation</p>
+        </div>
+
+    </footer>
+
+</div>
+
+<script src="./scripts/script.js"></script>
 
 </body>
 </html>
